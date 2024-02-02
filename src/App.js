@@ -122,6 +122,9 @@ function App() {
 
       // Call the function to fetch definitions for suggestions
       fetchDefinitionsForSuggestions();
+    } else {
+      // Clear errors when input is empty
+      setErrors([]);
     }
   };
 
@@ -168,7 +171,7 @@ function App() {
               {selectedWord && wordDefinitions.length === 0 && (
                 <div>No definitions found for {selectedWord}</div>
               )}
-              <ErrorList errors={errors} />
+              {inputValue.trim() !== "" && <ErrorList errors={errors} />}
             </section>
           </div>
         </div>
